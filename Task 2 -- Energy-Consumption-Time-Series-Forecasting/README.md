@@ -1,34 +1,23 @@
-# Task 2: Customer Segmentation Using Unsupervised Learning
+# Task 2: Energy Consumption Time Series Forecasting
 
 ## 📌 Objective
-Cluster a retail establishment's clientele based on their annual income and spending metrics to discover natural personas and propose tailored, data-driven marketing frameworks.
+Build a predictive framework to forecast short-term household active power usage profiles based on historical, time-sequenced measurements.
 
 ## 📊 Dataset
-* **Source:** Mall Customers Dataset
-* **Core Dimensions:** 200 records, 5 structural columns (`CustomerID`, `Gender`, `Age`, `AnnualIncome`, `SpendingScore`).
+* **Source:** Individual Household Electric Power Consumption Dataset
 
 ## 🛠️ Implementation Workflow
-1. **Exploratory Data Analysis (EDA):** Evaluated value distributions for continuous age features and mapped spending scores across genders.
-2. **Disparity Feature Scaling:** Implemented `StandardScaler` transformations to eliminate variable scale variations before calculating distance measurements.
-3. **Optimal K Selection:** Calculated the Within-Cluster Sum of Squares (WCSS) across alternative configurations (K=1 to 10) to identify the optimal elbow convergence point at **K=5**.
-4. **Dimensionality Reduction:** Compressed the 3D feature profile down to flat coordinates using Principal Component Analysis (PCA) for straightforward 2D visualization.
-5. **Strategic Action Plans:** Grouped structural coordinates to define five customer personas:
-   * *Loyal Senior Mid-Spenders* (Baseline Volume Pillar)
-   * *Elite Spenders* (High-Value Premium Focus)
-   * *Young Impulsive Buyers* (High Consumption / Low Income)
-   * *Young Pragmatic Shoppers* (Value-Driven Bundles)
-   * *Affluent Strategic Savers* (High Income / Defensive Spending)
-
-## 📁 Repository Artifacts Inside This Folder
-* `Mall_Customers.csv` - Raw client baseline dataset.
-* `eda_distributions.png` - Continuous feature histograms.
-* `elbow_curve.png` - WCSS elbow selection plot.
-* `customer_clusters.png` - 2D cluster visualization via PCA.
-* `mall_customers_segmented.csv` - Final dataset complete with cluster assignments.
-* `kmeans_customer_model.pkl` - Trained, production-ready clustering model artifact.
-* `customer_scaler.pkl` - Serialized StandardScaler instance for upcoming inference data.
+1. **Datetime Index Management:** Parsed data streams into chronological datetime formatting, handling missing intervals, and resampling data points cleanly.
+2. **Temporal Feature Engineering:** Extracted granular time-based features (including hour indices, day-of-week variables, and weekday vs. weekend flags) to identify cyclical consumption spikes.
+3. **Forecasting Model Architecture:** Developed and trained three distinct forecasting methodologies:
+   * Classical statistical models (**ARIMA**)
+   * Additive regression frameworks (**Prophet**)
+   * Gradient-boosted decision tree architectures (**XGBoost**)
+4. **Performance Evaluation:** Validated predictions using Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE) metrics to establish modeling accuracy.
+5. **Visualization Profiles:** Generated time-series overlay plots mapping actual household energy consumption values against predicted trends across test horizons.
 
 ## 🚀 Key Skills Demonstrated
-* Unsupervised Clustering Frameworks (K-Means)
-* Linear Dimensionality Reduction (PCA)
-* Behavioral Persona Profiling & Business Action Design
+* Time Series Resampling & Index Alignment
+* Chronological Feature Engineering
+* Statistical vs. Machine Learning Forecast Evaluation (ARIMA vs. Prophet vs. XGBoost)
+* Sequential Trend Visualization
